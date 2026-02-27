@@ -9,8 +9,8 @@ This project provides an intelligent, AI-assisted platform to detect and investi
 
 ## Screenshots & Demo Video
 
-**Screenshot 1:** `[Placeholder for Dashboard Overview]`  
-**Screenshot 2:** `[Placeholder for Anomaly Investigation View]`  
+**Screenshot 1:** ![Dashboard Overview](client/public/dashboard.png)  
+**Screenshot 2:** ![Anomaly Investigation View](client/public/chat.png)  
 
 
 ## Architecture Overview
