@@ -49,6 +49,22 @@ Once an anomaly is detected and contextualized with code metadata:
 2. **LLM Querying (Gemini)**: The AI engine queries the Gemini model with the prompt.
 3. **Resolution generation**: The AI returns a structured JSON payload containing a deep-dive explanation and step-by-step recommendations to resolve the issue.
 
+## Mock Data & Anomaly Simulation Strategy
+
+To simulate a realistic production environment and validate the anomaly detection pipeline, the system programmatically generates deployments and historical metrics with controlled degradations.
+
+1. **Simulated Deployments** : The application creates recent deployment records i.e
+auth-service deployed 20 minutes ago, notification-service deployed 40 minutes ago.
+These timestamps are later used to correlate detected anomalies with recent code changes.
+
+2. **Historical Metrics** : The system generates 2 hours of time-series data at 15-second intervals for each service and metric i.e response_time and error_rate. For most of the time window metrics remain within healthy ranges small random variance simulates natural system noise. This establishes a stable rolling statistical baseline
+
+3. **Controlled Post-Deployment Degradation** :  To trigger anomaly detection, the system introduces intentional metric degradation shortly after deployment (e.g., 5–10 minutes post-deploy). Metric values increase using a bounded exponential multiplier:
+Math.pow(1.4, Math.min(timeSinceSpike, 15)). This creates a realistic performance regression leads to Response time increases significantly and error rate rises progressively
+The rolling baseline is statistically violated
+
+4. **Why Anomalies Are Detected** : The anomaly engine calculates rolling mean and standard deviation Computes Z-scores for incoming values. Flags sustained deviations beyond threshold. Correlates anomalies with recent deployments using time proximity. This approach produces deterministic, reproducible anomalies that demonstrate Statistical detection, Deployment correlation, Code ownership mapping and 
+Confidence scoring.
 
 ## Sample Scenario
 
