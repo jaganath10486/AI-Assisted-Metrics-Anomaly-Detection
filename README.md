@@ -4,7 +4,7 @@ This project provides an intelligent, AI-assisted platform to detect and investi
 
 
 ## Web Application
-[Live Web Application URL](#)
+[Live Web Application URL](https://metrics-anomaly-detection.vercel.app/)
 
 
 ## Screenshots & Demo Video

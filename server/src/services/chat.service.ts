@@ -76,7 +76,7 @@ export class ChatService {
     const chat = model.startChat({
       history: [],
       generationConfig: {
-        maxOutputTokens: 1000,
+        maxOutputTokens: 30000,
         temperature: 0.7,
       },
     });
