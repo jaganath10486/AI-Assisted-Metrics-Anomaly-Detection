@@ -109,7 +109,7 @@ export function generateHistoricalMetrics(): MetricPoint[] {
   const points: MetricPoint[] = [];
 
   const authSpikeStart = now - 14 * 60 * 1000; // 14 mins ago - 6 mins after deployment
-  const notificationSpikeStart = now - 32 * 60 * 1000; // 32 mins ago - 8 mins after deployment
+  const notificationSpikeStart = now - 5 * 60 * 1000; // 5 mins ago - 35 mins after deployment
 
   for (let t = now - TWO_HOURS; t <= now; t += INTERVAL_MS) {
     const ts = new Date(t);
